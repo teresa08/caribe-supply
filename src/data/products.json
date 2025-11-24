@@ -1,0 +1,388 @@
+[
+    {
+        "id": "1",
+        "name": "Arroz",
+        "price": 32.50,
+        "description": "Arroz dominicano seleccionado de alta calidad.",
+        "image": "/alimentación/arroz.png",
+        "category": "alimentación"
+    },
+    {
+        "id": "2",
+        "name": "Leche Embajador",
+        "price": 55.00,
+        "description": "Leche en polvo marca Embajador.",
+        "image": "/alimentación/embajador.jpg",
+        "category": "alimentación"
+    },
+    {
+        "id": "3",
+        "name": "Leche Evaporada",
+        "price": 45.00,
+        "description": "Leche evaporada ideal para recetas.",
+        "image": "/alimentación/Evaporada.jpg",
+        "category": "alimentación"
+    },
+    {
+        "id": "4",
+        "name": "Galletas",
+        "price": 25.00,
+        "description": "Galletas dulces tradicionales.",
+        "image": "/alimentación/galletas.png",
+        "category": "alimentación"
+    },
+    {
+        "id": "5",
+        "name": "Huevos",
+        "price": 180.00,
+        "description": "Cartón de huevos frescos.",
+        "image": "/alimentación/Huevos.png",
+        "category": "alimentación"
+    },
+    {
+        "id": "6",
+        "name": "Jamón",
+        "price": 120.00,
+        "description": "Jamón tipo deli.",
+        "image": "/alimentación/jamón.png",
+        "category": "alimentación"
+    },
+    {
+        "id": "7",
+        "name": "Mantequilla",
+        "price": 90.00,
+        "description": "Mantequilla suave para untar.",
+        "image": "/alimentación/Mantequilla.jpg",
+        "category": "alimentación"
+    },
+    {
+        "id": "8",
+        "name": "Mayonesa",
+        "price": 85.00,
+        "description": "Mayonesa cremosa.",
+        "image": "/alimentación/mayonesa.png",
+        "category": "alimentación"
+    },
+    {
+        "id": "9",
+        "name": "Queso Mozzarella",
+        "price": 240.00,
+        "description": "Queso mozzarella fresco.",
+        "image": "/alimentación/mozzarella.png",
+        "category": "alimentación"
+    },
+    {
+        "id": "10",
+        "name": "Pan",
+        "price": 45.00,
+        "description": "Pan tradicional.",
+        "image": "/alimentación/Pan.jpg",
+        "category": "alimentación"
+    },
+    {
+        "id": "11",
+        "name": "Pechuga",
+        "price": 160.00,
+        "description": "Filete de pechuga fresca.",
+        "image": "/alimentación/pechuga.png",
+        "category": "alimentación"
+    },
+    {
+        "id": "12",
+        "name": "Tortillas",
+        "price": 70.00,
+        "description": "Paquete de tortillas suaves.",
+        "image": "/alimentación/TORTILLA.jpg",
+        "category": "alimentación"
+    },
+    {
+        "id": "13",
+        "name": "Agua",
+        "price": 25.00,
+        "description": "Botella de agua purificada.",
+        "image": "/bebidas/agua.png",
+        "category": "bebidas"
+    },
+    {
+        "id": "14",
+        "name": "Cerveza",
+        "price": 110.00,
+        "description": "Cerveza clásica dominicana.",
+        "image": "/bebidas/cerveza.jpg",
+        "category": "bebidas"
+    },
+    {
+        "id": "15",
+        "name": "C-LIGHT",
+        "price": 25.00,
+        "description": "Bebida baja en calorías.",
+        "image": "/bebidas/clight.png",
+        "category": "bebidas"
+    },
+    {
+        "id": "16",
+        "name": "Gatorade",
+        "price": 65.00,
+        "description": "Bebida deportiva hidratante.",
+        "image": "/bebidas/gatorade.png",
+        "category": "bebidas"
+    },
+    {
+        "id": "17",
+        "name": "Jugo Motts",
+        "price": 80.00,
+        "description": "Jugo de frutas Motts.",
+        "image": "/bebidas/jugoMotts.png",
+        "category": "bebidas"
+    },
+    {
+        "id": "18",
+        "name": "Jugo Petit",
+        "price": 25.00,
+        "description": "Jugo infantil Petit.",
+        "image": "/bebidas/JugoPetit.png",
+        "category": "bebidas"
+    },
+    {
+        "id": "19",
+        "name": "Jugo Rica",
+        "price": 85.00,
+        "description": "Jugo 100% de frutas Rica.",
+        "image": "/bebidas/jugoRica.png",
+        "category": "bebidas"
+    },
+    {
+        "id": "20",
+        "name": "Jugo Santal",
+        "price": 90.00,
+        "description": "Jugo de la marca Santal.",
+        "image": "/bebidas/JugoSantal.png",
+        "category": "bebidas"
+    },
+    {
+        "id": "21",
+        "name": "Lowenbrau",
+        "price": 120.00,
+        "description": "Cerveza Lowenbrau importada.",
+        "image": "/bebidas/lowenbraw.png",
+        "category": "bebidas"
+    },
+    {
+        "id": "22",
+        "name": "Malta Morena",
+        "price": 45.00,
+        "description": "Malta Morena tradicional.",
+        "image": "/bebidas/MaltaMorena.png",
+        "category": "bebidas"
+    },
+    {
+        "id": "23",
+        "name": "Refresco",
+        "price": 45.00,
+        "description": "Refresco en botella.",
+        "image": "/bebidas/Refresco.png",
+        "category": "bebidas"
+    },
+    {
+        "id": "24",
+        "name": "Ron",
+        "price": 350.00,
+        "description": "Ron dominicano de calidad.",
+        "image": "/bebidas/RON.png",
+        "category": "bebidas"
+    },
+
+
+    {
+        "id": "101",
+        "name": "Aguacate",
+        "price": 1.99,
+        "description": "Aguacate fresco de producción local.",
+        "image": "/frutasVegetales/Aguacate.png",
+        "category": "frutasVegetales"
+    },
+    {
+        "id": "102",
+        "name": "Ajo",
+        "price": 0.99,
+        "description": "Ajo natural ideal para cocinar.",
+        "image": "/frutasVegetales/Ajo.png",
+        "category": "frutasVegetales"
+    },
+    {
+        "id": "103",
+        "name": "Arándano",
+        "price": 3.49,
+        "description": "Arándanos frescos ricos en antioxidantes.",
+        "image": "/frutasVegetales/ARANDANO.png",
+        "category": "frutasVegetales"
+    },
+    {
+        "id": "104",
+        "name": "Auyama",
+        "price": 1.49,
+        "description": "Auyama dominicana fresca.",
+        "image": "/frutasVegetales/Auyama.png",
+        "category": "frutasVegetales"
+    },
+    {
+        "id": "105",
+        "name": "Cebolla",
+        "price": 1.10,
+        "description": "Cebollas blancas de alta calidad.",
+        "image": "/frutasVegetales/Cebolla.png",
+        "category": "frutasVegetales"
+    },
+    {
+        "id": "106",
+        "name": "Guineo Maduro",
+        "price": 0.35,
+        "description": "Guineos maduros dulces y frescos.",
+        "image": "/frutasVegetales/GuineoMaduro.png",
+        "category": "frutasVegetales"
+    },
+    {
+        "id": "107",
+        "name": "Guineo Verde",
+        "price": 0.30,
+        "description": "Guineos verdes ideales para tostones.",
+        "image": "/frutasVegetales/GuineoVerde.png",
+        "category": "frutasVegetales"
+    },
+    {
+        "id": "108",
+        "name": "Lechuga",
+        "price": 1.25,
+        "description": "Lechuga fresca para ensaladas.",
+        "image": "/frutasVegetales/Lechuga.png",
+        "category": "frutasVegetales"
+    },
+    {
+        "id": "109",
+        "name": "Limón Persa",
+        "price": 0.50,
+        "description": "Limón persa fresco y jugoso.",
+        "image": "/frutasVegetales/LimonPersa.png",
+        "category": "frutasVegetales"
+    },
+    {
+        "id": "110",
+        "name": "Mandarina",
+        "price": 2.99,
+        "description": "Mandarinas dulces y jugosas.",
+        "image": "/frutasVegetales/mandarinas.jpg",
+        "category": "frutasVegetales"
+    },
+    {
+        "id": "111",
+        "name": "Piña",
+        "price": 3.25,
+        "description": "Piña dulce de campo dominicano.",
+        "image": "/frutasVegetales/Piña.png",
+        "category": "frutasVegetales"
+    },
+    {
+        "id": "112",
+        "name": "Uvas",
+        "price": 4.50,
+        "description": "Uvas frescas y crocantes.",
+        "image": "/frutasVegetales/uvas.png",
+        "category": "frutasVegetales"
+    },
+    {
+        "id": "201",
+        "name": "Aceite de Coco",
+        "price": 5.99,
+        "description": "Aceite de coco natural para cocinar o uso cosmético.",
+        "image": "/saludBienestar/ACEITE_COCO.jpg",
+        "category": "saludBienestar"
+    },
+    {
+        "id": "202",
+        "name": "Aceite Vegetal",
+        "price": 3.49,
+        "description": "Aceite comestible para uso diario.",
+        "image": "/saludBienestar/ACEITE.jpg",
+        "category": "saludBienestar"
+    },
+    {
+        "id": "203",
+        "name": "Aceite de Ajonjolí",
+        "price": 6.99,
+        "description": "Aceite de ajonjolí ideal para platillos gourmet.",
+        "image": "/saludBienestar/AJONJOLI.jpg",
+        "category": "saludBienestar"
+    },
+    {
+        "id": "204",
+        "name": "Gelatina",
+        "price": 1.20,
+        "description": "Gelatina en polvo para postres.",
+        "image": "/saludBienestar/Gelatina.jpg",
+        "category": "saludBienestar"
+    },
+    {
+        "id": "205",
+        "name": "Aceite de Girasol",
+        "price": 4.10,
+        "description": "Aceite natural de semillas de girasol.",
+        "image": "/saludBienestar/Girasol.jpg",
+        "category": "saludBienestar"
+    },
+    {
+        "id": "206",
+        "name": "Glucerna",
+        "price": 12.99,
+        "description": "Suplemento nutricional para control de glucosa.",
+        "image": "/saludBienestar/GLUCERNA.jpg",
+        "category": "saludBienestar"
+    },
+    {
+        "id": "207",
+        "name": "Granola",
+        "price": 4.99,
+        "description": "Mezcla de granos y frutas deshidratadas.",
+        "image": "/saludBienestar/Granola.jpg",
+        "category": "saludBienestar"
+    },
+    {
+        "id": "208",
+        "name": "Harina",
+        "price": 2.10,
+        "description": "Harina para repostería y cocina.",
+        "image": "/saludBienestar/Harina.jpeg",
+        "category": "saludBienestar"
+    },
+    {
+        "id": "209",
+        "name": "Leche de Almendra",
+        "price": 3.99,
+        "description": "Bebida vegetal saludable.",
+        "image": "/saludBienestar/LECHE_ALMENDRA.jpg",
+        "category": "saludBienestar"
+    },
+    {
+        "id": "210",
+        "name": "Quinoa",
+        "price": 6.49,
+        "description": "Semillas de quinoa rica en proteínas.",
+        "image": "/saludBienestar/QUINOA.jpeg",
+        "category": "saludBienestar"
+    },
+    {
+        "id": "211",
+        "name": "Splenda",
+        "price": 5.00,
+        "description": "Endulzante sin calorías.",
+        "image": "/saludBienestar/SPLENDA.jpg",
+        "category": "saludBienestar"
+    },
+    {
+        "id": "212",
+        "name": "Vinagre",
+        "price": 1.75,
+        "description": "Vinagre blanco multiusos.",
+        "image": "/saludBienestar/Vinagre.jpg",
+        "category": "saludBienestar"
+    }
+]
