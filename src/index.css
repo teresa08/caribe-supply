@@ -118,3 +118,18 @@ select:focus {
 }
 
 
+/* para el modo claro */
+body.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+  transition: background 0.3s ease;
+}
+
+/* para el modo oscuro */
+body.dark-mode {
+  background-color: #0d1117;
+  color: #ffffff;
+  transition: background 0.3s ease;
+}
+
+
