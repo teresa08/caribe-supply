@@ -1,21 +1,50 @@
+// src/components/shared/ProductCard.jsx
 import React, { useContext } from 'react';
-import { Card, CardMedia, CardContent, Typography, Button, CardActions } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography, Button, CardActions } from '@mui/material';
 import { CartContext } from '../../context/CartContext';
 
-const ProductCard = ({ product }) => {
+// Añadimos una prop `onDelete`
+const ProductCard = ({ product, onEdit, onDelete }) => {
   const { addToCart } = useContext(CartContext);
-  const image = product.image && product.image.startsWith('http') ? product.image : (product.image ? `https://teresa08.github.io/caribe-supply/images${product.image}` : 'https://via.placeholder.com/400x300?text=Sin+imagen');
+
+  const handleEditClick = () => {
+    if (onEdit) {
+      onEdit(product);
+    }
+  };
+
+  const handleDeleteClick = () => {
+    if (onDelete) {
+      onDelete(product.id); // Pasa el ID del producto a eliminar
+    }
+  };
+
   return (
-    <Card sx={{ borderRadius: 2, display: 'flex', flexDirection: 'column', transition: '0.25s', '&:hover': { transform: 'translateY(-6px) scale(1.02)', boxShadow: 8 } }}>
-      <CardMedia component="img" height="180" image={image} alt={product.name} sx={{ objectFit: 'cover' }} />
-      <CardContent sx={{ flexGrow: 1 }}>
-        <Typography variant="subtitle1" sx={{ fontWeight: 600 }} noWrap>{product.name}</Typography>
-        <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>{product.category || 'General'}</Typography>
-        <Typography variant="h6" sx={{ mt: 1 }}>${Number(product.price).toFixed(2)}</Typography>
-        {product.description && <Typography variant="body2" sx={{ mt: 1 }}>{product.description}</Typography>}
+    <Card sx={{ maxWidth: 345, margin: '1rem' }}>
+      <CardMedia
+        component="img"
+        height="140"
+        image={product.image || 'https://via.placeholder.com/150'} // Fallback si no hay imagen
+        alt={product.name}
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {product.name}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {product.description}
+        </Typography>
+        <Typography variant="h6" color="primary">
+          ${product.price ? product.price.toFixed(2) : '0.00'}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Categoría: {product.category}
+        </Typography>
       </CardContent>
       <CardActions>
-        <Button variant="contained" fullWidth onClick={() => addToCart(product)}>Añadir</Button>
+        <Button size="small" onClick={handleEditClick}>Editar</Button>
+        <Button size="small" color="error" onClick={handleDeleteClick}>Eliminar</Button> {/* Botón de eliminar */}
+        <Button size="small" onClick={() => addToCart(product)}>Añadir al Carrito</Button>
       </CardActions>
     </Card>
   );

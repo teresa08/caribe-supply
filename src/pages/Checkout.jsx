@@ -1,10 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AppContext } from '../context/AppContext';
+// import { AppContext } from '../context/AppContext'; // <--- ¡Elimina o comenta esta línea!
+import { CartContext } from '../context/CartContext'; // <--- ¡Añade esta línea!
 import { validateEmail, validatePhone, validateNotEmpty } from '../utils/validators';
 
 const Checkout = () => {
-  const { cart, clearCart } = useContext(AppContext);
+  // <--- ¡CAMBIO AQUÍ! Ahora usa CartContext
+  const { cart, clearCart } = useContext(CartContext);
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -46,14 +48,15 @@ const Checkout = () => {
       // Simulación de procesamiento
       setTimeout(() => {
         alert('¡Compra simulada exitosa! Gracias por tu pedido.');
-        clearCart();
+        clearCart(); // Esto ahora debería llamar al clearCart del CartContext
         navigate('/');
         setIsSubmitting(false);
       }, 1000);
     }
   };
 
-  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  // Estos cálculos ahora deberían usar el `cart` del CartContext real
+  const subtotal = cart.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0);
   const tax = subtotal * 0.18;
   const total = subtotal + tax;
 
@@ -65,11 +68,17 @@ const Checkout = () => {
         {/* Resumen del pedido */}
         <div style={{ flex: 1 }}>
           <h3>Resumen</h3>
-          {cart.map((item) => (
-            <div key={item.id} style={{ marginBottom: '0.5rem' }}>
-              <span>{item.name} × {item.quantity}</span> – ${ (item.price * item.quantity).toFixed(2) }
-            </div>
-          ))}
+          {cart.length === 0 ? (
+            <p>El carrito está vacío.</p>
+          ) : (
+            <>
+              {cart.map((item, index) => ( // Añadí index para key si item.id no es único
+                <div key={item.id || index} style={{ marginBottom: '0.5rem' }}>
+                  <span>{item.name} × {item.quantity}</span> – ${ (item.price * item.quantity).toFixed(2) }
+                </div>
+              ))}
+            </>
+          )}
           <hr />
           <p><strong>Subtotal:</strong> ${subtotal.toFixed(2)}</p>
           <p><strong>ITBIS (18%):</strong> ${tax.toFixed(2)}</p>
@@ -79,6 +88,7 @@ const Checkout = () => {
         {/* Formulario */}
         <div style={{ flex: 2 }}>
           <form onSubmit={handleSubmit}>
+            {/* ... el resto de tu formulario */}
             <div style={{ marginBottom: '1rem' }}>
               <label htmlFor="name">Nombre completo *</label>
               <input

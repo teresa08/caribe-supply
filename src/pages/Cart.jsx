@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AppContext } from '../context/AppContext';
+import { CartContext } from '../context/CartContext';
 
 const Cart = () => {
-  const { cart, removeFromCart, updateQuantity } = useContext(AppContext);
+  const { cart, removeFromCart, updateQuantity } = useContext(CartContext);
+
   const navigate = useNavigate();
 
-  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const tax = subtotal * 0.18; // Simulación de ITBIS (18%)
+  const subtotal = cart.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0);
+  const tax = subtotal * 0.18;
   const total = subtotal + tax;
 
   return (
@@ -17,8 +18,8 @@ const Cart = () => {
         <p>Tu carrito está vacío.</p>
       ) : (
         <>
-          {cart.map((item) => (
-            <div key={item.id} style={{ marginBottom: '1rem', padding: '1rem', border: '1px solid #ccc' }}>
+          {cart.map((item, index) => (
+            <div key={item.id || index} style={{ marginBottom: '1rem', padding: '1rem', border: '1px solid #ccc' }}>
               <h4>{item.name}</h4>
               <p>Precio: ${item.price.toFixed(2)}</p>
               <label>
