@@ -21,7 +21,7 @@ import Footer from './components/layout/Footer';
 import { CartProvider } from './context/CartContext.jsx';
 import { CustomThemeProvider } from './context/ThemeContext.jsx';
 import CartSnackbar from './components/shared/CartSnackbar';
-import ProductFormLauncher from './components/shared/ProductFormLauncher';
+// import ProductFormLauncher from './components/shared/ProductFormLauncher'; // <--- ¡Elimina esta importación!
 
 const ProtectedRoute = ({ children }) => {
   const { user } = useContext(AppContext);
@@ -76,7 +76,7 @@ function App() {
           <Router>
             <AppContent />
             <CartSnackbar />
-            <ProductFormLauncher />
+            {/* <ProductFormLauncher /> */} {/* <--- ¡Elimina o comenta esta línea! */}
           </Router>
         </CartProvider>
       </CustomThemeProvider>
