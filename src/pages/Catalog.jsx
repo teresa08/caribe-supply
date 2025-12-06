@@ -1,51 +1,123 @@
+// src/pages/Catalog.js
 import React, { useState, useEffect, useContext } from 'react';
-import { fetchProducts } from '../services/api/catalogAPI';
+import { fetchProducts, addProduct, updateProduct, deleteProduct } from '../services/api/catalogAPI';
 import { AppContext } from '../context/AppContext';
 import { CartContext } from '../context/CartContext';
 import ProductCard from '../components/shared/ProductCard';
-import ProductFormLauncher from '../components/shared/ProductFormLauncher';
+import ProductForm from '../components/products/ProductForm';
+import { Button } from '@mui/material'; // Mantén esta importación
 
+/** Componente principal del catálogo de productos. */
 const Catalog = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { /* keep AppContext if used elsewhere */ } = useContext(AppContext);
-  const { addToCart } = useContext(CartContext);
+  const [openForm, setOpenForm] = useState(false);
+  const [editingProduct, setEditingProduct] = useState(null);
+
+  useContext(AppContext);
+
+  // Función para obtener los productos y actualizar el estado
+  const getAndSetProducts = async () => {
+    setLoading(true);
+    try {
+      const fetchedProducts = await fetchProducts();
+      setProducts(fetchedProducts);
+    } catch (error) {
+      console.error("Error al cargar productos:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    fetchProducts().then((res) => {
-      const custom = JSON.parse(localStorage.getItem('customProducts') || '[]');
-      setProducts([...res, ...custom]);
-    }).finally(() => setLoading(false));
+    getAndSetProducts(); // Carga inicial de productos
 
-    const onUpdated = () => {
-      // reload custom products only to avoid refetching API
-      setProducts(prev => {
-        // try to keep API products at front; if you prefer fetch again, replace with fetchProducts()
-        const apiPart = prev.filter(p => p && p.id);
-        const custom = JSON.parse(localStorage.getItem('customProducts') || '[]');
-        return [...apiPart, ...custom];
-      });
+    // Escuchador de eventos para refrescar la lista
+    // Esta es una alternativa al "refresh" que comentas
+    const onProductsUpdated = () => {
+      getAndSetProducts();
     };
-    window.addEventListener('products-updated', onUpdated);
-    return () => window.removeEventListener('products-updated', onUpdated);
+    window.addEventListener('products-updated', onProductsUpdated);
+
+    return () => window.removeEventListener('products-updated', onProductsUpdated);
   }, []);
+
+  /** Abre el formulario para añadir un producto. */
+  const handleOpenAddForm = () => {
+    setEditingProduct(null);
+    setOpenForm(true);
+  };
+
+  /** Abre el formulario para editar un producto existente. */
+  const handleEditProduct = (product) => {
+    setEditingProduct(product);
+    setOpenForm(true);
+  };
+
+  /** Cierra el formulario de productos. */
+  const handleCloseForm = () => {
+    setOpenForm(false);
+    setEditingProduct(null);
+  };
+
+  /** Guarda un producto (añade o actualiza). */
+  const handleSaveProduct = async (productData) => {
+    try {
+      if (editingProduct) {
+        await updateProduct(editingProduct.id, productData);
+      } else {
+        await addProduct(productData);
+      }
+      handleCloseForm();
+      // Ya no necesitamos window.dispatchEvent aquí porque getAndSetProducts se llamará internamente
+      getAndSetProducts(); // Refresca la lista inmediatamente después de guardar
+    } catch (error) {
+      console.error("Error al guardar el producto:", error);
+    }
+  };
+
+  /** Elimina un producto. */
+  const handleDeleteProduct = async (productId) => {
+    if (window.confirm('¿Estás seguro de que quieres eliminar este producto?')) {
+      try {
+        await deleteProduct(productId);
+        // Ya no necesitamos window.dispatchEvent aquí
+        getAndSetProducts(); // Refresca la lista inmediatamente después de eliminar
+      } catch (error) {
+        console.error("Error al eliminar el producto:", error);
+      }
+    }
+  };
 
   return (
     <div style={{ padding: '2rem' }}>
       <h2>Nuestros Productos</h2>
-      <ProductFormLauncher />
+      {/* Botón para lanzar el formulario de añadir */}
+      <Button variant="contained" onClick={handleOpenAddForm} sx={{ mb: 2 }}>
+        Registrar Nuevo Producto
+      </Button>
+
       {loading ? (
         <p>Cargando productos...</p>
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1.5rem' }}>
-          {products.map((product, i) => (
+          {products.map((product) => (
             <ProductCard
-              key={product.id || `custom-${i}`}
+              key={product.id}
               product={product}
+              onEdit={handleEditProduct}
+              onDelete={handleDeleteProduct}
             />
           ))}
         </div>
       )}
+
+      <ProductForm
+        open={openForm}
+        onClose={handleCloseForm}
+        onSave={handleSaveProduct}
+        initialProduct={editingProduct}
+      />
     </div>
   );
 };

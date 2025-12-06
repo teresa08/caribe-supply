@@ -1,10 +1,15 @@
 import React, { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AppContext } from '../../context/AppContext';
+import { CartContext } from '../../context/CartContext'; // <-- ¡Añade esta importación!
 import ThemeToggle from '../shared/ThemeToggle';
 
 const Navbar = () => {
-  const { user, logout, cart } = useContext(AppContext);
+  // Desestructura 'user' y 'logout' del AppContext
+  const { user, logout } = useContext(AppContext);
+  // Desestructura 'cart' del CartContext
+  const { cart } = useContext(CartContext); // <-- ¡Modifica esta línea!
+
   const location = useLocation();
 
   const handleLogout = () => {
@@ -21,7 +26,7 @@ const Navbar = () => {
     position: 'sticky',
     top: 0,
     zIndex: 1000,
-    width: '100%', 
+    width: '100%',
     boxSizing: 'border-box'
   };
 
@@ -62,6 +67,11 @@ const Navbar = () => {
   };
 
   const renderAuthLinks = () => {
+    // Calcula la cantidad total de artículos o la suma de las cantidades
+    // Si quieres el número de productos únicos: cart.length
+    // Si quieres la suma de las cantidades de cada producto:
+    const totalItemsInCart = cart.reduce((total, item) => total + (item.quantity || 1), 0);
+
     if (user) {
       return (
         <>
@@ -69,7 +79,7 @@ const Navbar = () => {
             to="/cart"
             style={location.pathname === '/cart' ? activeLinkStyle : linkStyle}
           >
-            🛒 Carrito ({cart.length})
+            🛒 Carrito ({totalItemsInCart}) {/* <-- ¡Usa totalItemsInCart aquí! */}
           </Link>
           <Link
             to="/checkout"
@@ -115,9 +125,6 @@ const Navbar = () => {
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
         {renderAuthLinks()}
-        <button onClick={() => window.dispatchEvent(new CustomEvent('open-product-form'))} style={{...buttonStyle, marginLeft: '0.5rem'}}>
-          Añadir producto
-        </button>
         <ThemeToggle />
       </div>
     </nav>
